@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Opening App…</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding-top: 50px;
+      }
+    </style>
+    <script>
+      function getParam(key) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(key);
+      }
+
+      function openApp() {
+        const deepLink = getParam("deep_link") || "wonjokids://";
+        const appStoreUrl = "https://wonjokids.go.link/p/special?adj_t=1jdxdzqu";
+
+        // Try to open app
+        window.location = deepLink;
+
+        // Fallback after timeout
+        setTimeout(() => {
+          window.location.href = appStoreUrl;
+        }, 2000);
+      }
+
+      window.onload = openApp;
+    </script>
+  </head>
+  <body>
+    <!-- <h2>Redirecting to the app…</h2>
+    <p>If nothing happens, <a id="fallback-link" href="https://wonjokids.go.link/p/special?adj_t=1jdxdzqu">click here</a></p>
+    <script>
+      // document.getElementById("fallback-link").href = "https://apps.apple.com/app/id6475648610";
+      document.getElementById("fallback-link").href = "https://wonjokids.go.link/p/special?adj_t=1jdxdzqu";
+    </script> -->
+  </body>
+</html>
+
