@@ -13,20 +13,23 @@
     <script>
       function getParam(key) {
         const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(key);
+        return decodeURIComponent(urlParams.get(key) || "");
       }
 
       function openApp() {
-        const deepLink = getParam("deep_link") || "wonjokids://";
-        const appStoreUrl = "https://wonjokids.go.link/p/special?adj_t=1jdxdzqu";
+        
+        const deepLink = getParam("dl") || "wonjokids://";
+        const adl = getParam("adl") || "https://apps.apple.com/app/id6475648610";
 
         // Try to open app
-        window.location = deepLink;
+        if (deepLink) {
+          window.location = deepLink;
+        }
 
         // Fallback after timeout
         setTimeout(() => {
-          window.location.href = appStoreUrl;
-        }, 2000);
+          window.location.href = adl;
+        }, 3000);
       }
 
       window.onload = openApp;
