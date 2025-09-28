@@ -2,7 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Opening App…</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opening App...</title>
+    <meta name="description" content="Opening app... If you don't have it installed, you'll be redirected to download." />
+    
     <style>
       body {
         font-family: sans-serif;
@@ -15,6 +18,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         return decodeURIComponent(urlParams.get(key) || "");
       }
+
 
       function openApp() {
         
@@ -32,7 +36,9 @@
         }, 3000);
       }
 
-      window.onload = openApp;
+      window.onload = function() {
+        openApp();
+      };
     </script>
   </head>
   <body>

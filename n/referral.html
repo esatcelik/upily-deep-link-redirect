@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wonjo Kids Learning Games</title>
+    <meta name="description" content="Someone shared WonJo Kids with you." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wonjo-open.web.app/referral" />
+    <meta property="og:title" content="Wonjo Kids Learning Games" />
+    <meta property="og:description" content="Someone shared WonJo Kids with you." />
+    <meta property="og:image" content="https://cdn-statics.upily.com/img/wk3.jpg" />
+    <meta property="og:image:secure_url" content="https://cdn-statics.upily.com/img/wk3.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Wonjo Kids Learning Games - Educational app for children" />
+    <meta property="og:site_name" content="Wonjo Kids" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://wonjo-open.web.app/referral" />
+    <meta property="twitter:title" content="Wonjo Kids Learning Games" />
+    <meta property="twitter:description" content="Someone shared WonJo Kids with you." />
+    <meta property="twitter:image" content="https://cdn-statics.upily.com/img/wk3.jpg" />
+    <meta name="theme-color" content="#ff6b35" />
+    
+    <!-- Additional WhatsApp compatibility -->
+    <meta name="twitter:image:src" content="https://cdn-statics.upily.com/img/wk3.jpg" />
+    <link rel="image_src" href="https://cdn-statics.upily.com/img/wk3.jpg" />
+    
+    <!-- Additional image meta tags for better compatibility -->
+    <meta property="og:image:url" content="https://cdn-statics.upily.com/img/wk3.jpg" />
+    <meta name="image" content="https://cdn-statics.upily.com/img/wk3.jpg" />
+    <meta itemprop="image" content="https://cdn-statics.upily.com/img/wk3.jpg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://cdn-statics.upily.com/img/wk2.png" />
+    
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding-top: 50px;
+      }
+    </style>
+    <script>
+      function getParam(key) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return decodeURIComponent(urlParams.get(key) || "");
+      }
+
+      function openApp() {
+        const deepLink = getParam("dl") || "wonjokids://";
+        const adl = getParam("adl") || "https://apps.apple.com/app/id6475648610";
+
+        // Try to open app
+        if (deepLink) {
+          window.location = deepLink;
+        }
+
+        // Fallback after timeout
+        setTimeout(() => {
+          window.location.href = adl;
+        }, 3000);
+      }
+
+      window.onload = function() {
+        openApp();
+      };
+    </script>
+  </head>
+  <body>
+    <!-- <h2>Redirecting to the app…</h2>
+    <p>If nothing happens, <a id="fallback-link" href="https://wonjokids.go.link/p/special?adj_t=1jdxdzqu">click here</a></p>
+    <script>
+      // document.getElementById("fallback-link").href = "https://apps.apple.com/app/id6475648610";
+      document.getElementById("fallback-link").href = "https://wonjokids.go.link/p/special?adj_t=1jdxdzqu";
+    </script> -->
+  </body>
+</html>
