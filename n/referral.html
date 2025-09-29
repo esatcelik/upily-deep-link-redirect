@@ -52,6 +52,57 @@
         return decodeURIComponent(urlParams.get(key) || "");
       }
 
+      function updateLanguageContent() {
+        const lang = getParam("l") || "en"; // Default to English
+        
+        // Language-specific content
+        const content = {
+          en: {
+            title: "Wonjo Kids Learning Games",
+            description: "Someone shared WonJo Kids with you.",
+            imageFile: "wk3.jpg"
+          },
+          tr: {
+            title: "Wonjo Kids Learning Games",
+            description: "Biri seninle WonJo Kids'i paylaştı.",
+            imageFile: "wk3-tr.jpg"
+          }
+        };
+        
+        const currentContent = content[lang] || content.en;
+        const imageUrl = `https://cdn-statics.upily.com/img/${currentContent.imageFile}`;
+        
+        // Update title
+        document.title = currentContent.title;
+        
+        // Update meta description
+        document.querySelector('meta[name="description"]').content = currentContent.description;
+        
+        // Update Open Graph tags
+        document.querySelector('meta[property="og:title"]').content = currentContent.title;
+        document.querySelector('meta[property="og:description"]').content = currentContent.description;
+        document.querySelector('meta[property="og:image"]').content = imageUrl;
+        document.querySelector('meta[property="og:image:secure_url"]').content = imageUrl;
+        document.querySelector('meta[property="og:image:url"]').content = imageUrl;
+        
+        // Update Twitter tags
+        document.querySelector('meta[property="twitter:title"]').content = currentContent.title;
+        document.querySelector('meta[property="twitter:description"]').content = currentContent.description;
+        document.querySelector('meta[property="twitter:image"]').content = imageUrl;
+        document.querySelector('meta[name="twitter:image:src"]').content = imageUrl;
+        
+        // Update additional image tags
+        document.querySelector('link[rel="image_src"]').href = imageUrl;
+        document.querySelector('meta[name="image"]').content = imageUrl;
+        document.querySelector('meta[itemprop="image"]').content = imageUrl;
+        
+        // Update alt text based on language
+        const altText = lang === "tr" 
+          ? "Wonjo Kids Öğrenme Oyunları - Çocuklar için eğitici uygulama"
+          : "Wonjo Kids Learning Games - Educational app for children";
+        document.querySelector('meta[property="og:image:alt"]').content = altText;
+      }
+
       function openApp() {
         const deepLink = getParam("dl") || "wonjokids://";
         const adl = getParam("adl") || "https://apps.apple.com/app/id6475648610";
@@ -67,9 +118,13 @@
         }, 3000);
       }
 
-      window.onload = function() {
+      // Update language content immediately when script loads
+      updateLanguageContent();
+      
+      // Add a delay before starting the app redirect to allow meta tags to be processed
+      setTimeout(() => {
         openApp();
-      };
+      }, 1000); // Wait 1 second for meta tags to be updated
     </script>
   </head>
   <body>
